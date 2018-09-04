@@ -1,35 +1,27 @@
 
-var persons = [
-    "Max",
-    "Erja",
-    "Stefan",
-    "Colin",
-    "KarLoke",
-    "Manasi",
-    "Melissa",
-    "Kimberly",
-    "Nate",
-]
-persons.sort();
-
-
-var G = new DebtGraph();
-
-persons.forEach(x => G.addUser(x));
-
-G.simplify();
-
-console.log(G.edges.map(x => x.toString()));
+var persons = [];
 
 $(document).ready(function(){
-    var html = "<th>Event</th><th>Payee</th><th>Amount</th><th>"+persons.join("</th><th>")+"</th><th></th>";
-    $('#header').html(html);
-    $('#add').click(function(){addRow();})
-    $('#clear').click(function(){$.localStorage.setItem("save",null); location.reload();})
-    $('#analyse').click(function(){G.simplify();$('#matrix').html(matrix());})
     load();
     parse();
+    if(persons == null)
+        persons = [];
+    var html = "<th>Event</th><th>Payee</th><th>Amount</th><th>"+persons.join("</th><th>")+"</th><th>"
+    html+="</th>";
+    $('#header').html(html);
+    $('#add').click(function(){addRow();})
+    $('#person').click(function(){addPerson();})
+    $('#clear').click(function(){clear();})
+    $('#analyse').click(function(){G.simplify();$('#matrix').html(matrix());})
+   
 })
+
+function clear(){
+    $.localStorage.setItem("save",null); 
+    $.localStorage.setItem("persons",JSON.stringify([])); 
+    location.reload();
+
+}
 
 $(document).on('click','.a',function(){
     $(this).toggleClass('active');
@@ -37,6 +29,13 @@ $(document).on('click','.a',function(){
 })
 $(document).on('change','input',parse);
 $(document).on('change','select',parse);
+
+function addPerson(){
+    var name = $('#newguy').val();
+    persons.push(name);
+    parse();
+    location.reload();
+}
 
 function parse(){
     G = new DebtGraph();
@@ -75,9 +74,12 @@ function parse(){
 
 function save(R){
     $.localStorage.setItem("save",JSON.stringify(R));
+    $.localStorage.setItem("persons",JSON.stringify(persons));
 }
 function load(){
     var save = $.localStorage.getItem("save");
+    var ps = $.localStorage.getItem("persons");
+    persons = JSON.parse(ps);
     if(save != null){
         var R = JSON.parse(save);
         if(R != null){
