@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="jquery.html5storage.min.js"></script>
+        <script src="DebtGraph.js"></script>
+        <script type="text/javascript" src="EQ.js"></script>
+
+        <style>
+            .a{
+                color:#ddd;
+                border:1px solid #ddd;
+            }
+            .a.active{
+                color:#b90;
+                background:#fb0;
+            }
+        </style>
+    </head>
+    <body id="root">
+        <div class="container">
+            <div class="header">
+                <h3>Debt Equalizer</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    Add rows for different expenses here, then press "Analyse". 
+                    <b>Payee</b> is the person who paid the expense, 
+                    <b>Amount</b> is the cost of the expense. Click all the names who should have paid for the expense.<!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="utf-8" />
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <title>Page Title</title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+                        <script src="main.js"></script>
+                    </head>
+                    <body>
+                        
+                    </body>
+                    </html>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <table class="table table-sm">
+                        <tr id="header"><th>Event</th><th>Payee</th><th>
+                        </th></tr>
+                        <tr id="addRow">
+                            
+                        </tr>
+                        <tr>
+                            <th><button id="add" class="btn btn-sm btn-primary">+</button></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="analyse">ANALYSE</button>
+            <hr>
+            <div id="alldebts">
+            </div>
+            <div id="matrix">
+            </div>
+
+            <hr>
+            <button class="btn btn-danger" id="clear">CLEAR</button>
+        </div>
+    </body>
+</html>
